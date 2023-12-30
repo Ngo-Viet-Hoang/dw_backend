@@ -15,10 +15,10 @@ class CreateFurnituresTable extends Migration
     {
         Schema::create('furnitures', function (Blueprint $table) {
             $table->id();
-            $table->string("productCode");
-            $table->string("name");
-            $table->double("price");
-            $table->string("avatar");
+            $table->string('productCode');
+            $table->string('name');
+            $table->double('price');
+            $table->string('avatar');
             $table->timestamps();
         });
     }

@@ -9,5 +9,6 @@ class Furniture extends Model
 {
     use HasFactory;
     protected $table = 'furnitures';
+    
     protected $fillable =['productCode', 'name', 'price', 'avatar'];
 }

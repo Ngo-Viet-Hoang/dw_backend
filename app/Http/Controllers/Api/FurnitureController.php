@@ -11,7 +11,7 @@ class FurnitureController extends Controller
 {
     public function index(){
         $furnitures = Furniture::all();
-        if($furnitures-> count() >0){
+        if($furnitures-> count() > 0){
             return response()->json([
                 'status'=> 200,
                 'furnitures' =>$furnitures
@@ -24,37 +24,8 @@ class FurnitureController extends Controller
         }
     }
     public function store (Request $request){
-        $validator  = Validator::make($request->all(),[
-            'productCode' =>'require',
-            'name' =>'require',
-            'price' =>'require',
-            'avatar' =>'require',
-        ]);
-        if($validator->fails()){
-            return response() ->json([
-                'status'=> 422,
-            ], 422);
-        }else{
-
-            $furniture = Furniture::create([
-                'productCode' => $request->productCode,
-                'name' => $request->name,
-                'price' => $request->price,
-                'avatar' => $request->avatar,
-            ]);
-            if($furniture){
-
-                return response()->json([
-                    'status' => 200,
-                    'message' =>"Created Successfully"
-                ],200);
-            }else{
-                return response()->json([
-                    'status' => 500,
-                    'message' =>"Something went Wrong"
-                ],500);
-            }
-        }
+        return Furniture::create($request->all());
+     
     }
     function search($key){
         return Furniture::where('name','Like',"%$key%")->get();
